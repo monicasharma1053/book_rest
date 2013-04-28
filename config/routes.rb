@@ -1,8 +1,8 @@
 BookRest::Application.routes.draw do
+  resources :carts
+
+
   resources :orders
-
-
-  resources :cars
 
 
   resources :users

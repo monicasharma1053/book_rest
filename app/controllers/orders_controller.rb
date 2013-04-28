@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml { render xml: @orders}
+      format.xml { render xml: @order}
       format.json { render json: @order }
     end
   end
