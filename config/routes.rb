@@ -1,6 +1,9 @@
 BookRest::Application.routes.draw do
+  
+  match '/' => 'home#index', as: 'root'
   resources :carts
 
+  get  'books/search' => 'books#search', as: 'book_search'
 
   resources :orders
 
@@ -20,6 +23,9 @@ BookRest::Application.routes.draw do
   match '/activate/:activation_code' => 'users#activate', :as => :activate, :activation_code => nil
 
   resources :books
+
+  get  'orders/:id/search' => 'orders#search', as: 'order_book_search'
+  get  'orders/:id/browse' => 'orders#browse', as: 'order_books_browse'
 
 
   # The priority is based upon order of creation:

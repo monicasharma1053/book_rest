@@ -1,0 +1,5 @@
+<h1>RESTfull bookstore</h1>
+<%= form_tag book_search_path, method: 'get' do %>
+  <%= text_field_tag :search, params[:search], placeholder: "search by title or by author or by ISBN", size: '50px' %>
+  <%= submit_tag "Search" %>
+<% end %>

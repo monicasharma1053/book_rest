@@ -19,13 +19,27 @@
     <td><%= book.price %></td>
     <td><%= book.description %></td>
     <td><%= book.isbn %></td>
+    <% if @order %>
+    <td><%= link_to '| Details', order_book_path(@order, book) %></td>
+    <td><%= link_to '| Remove from cart', return_book_path(@order, book), method: :post %></td>
+    <% else %>
     <td><%= link_to 'Show', book %></td>
     <td><%= link_to 'Edit', edit_book_path(book) %></td>
     <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Book', new_book_path %>
+
+<%= link_to 'Home', root_path, method: :get %>
+<% if params[:order_id] %>
+  <%= link_to 'Order Details', order_path(params[:order_id]) %>
+  <%= link_to 'Back to Orders', orders_path %>
+  <%= link_to 'Browse for Books', order_books_browse_path(params[:order_id]) %>
+<% else %>
+  <%= link_to 'New Book', new_book_path %>
+  <%= link_to 'New Order', new_order_path %>
+<% end %>
