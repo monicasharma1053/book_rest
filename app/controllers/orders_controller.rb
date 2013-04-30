@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
 
     redirect_to orders_path if @order.save
   end
+  
 
   def browse
     @order = Order.find(params[:id])
@@ -35,7 +36,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.xml { render xml: [@order, @books]}
+      format.xml { render xml: [@order, @books] }
       format.json { render json: [ @order, @books ] }
     end
   end
@@ -113,7 +114,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.update_attributes(params[:order])
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.xml { head: ok }
+        format.xml { head :ok }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

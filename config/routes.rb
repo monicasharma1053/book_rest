@@ -5,7 +5,9 @@ BookRest::Application.routes.draw do
 
   get  'books/search' => 'books#search', as: 'book_search'
 
-  resources :orders
+  resources :orders do
+    resources :books, only: [:index, :show, :destroy]
+  end
 
 
   resources :users
@@ -26,6 +28,7 @@ BookRest::Application.routes.draw do
 
   get  'orders/:id/search' => 'orders#search', as: 'order_book_search'
   get  'orders/:id/browse' => 'orders#browse', as: 'order_books_browse'
+  post 'orders/:order_id/checkout' => 'orders#checkout', as: 'checkout'
 
 
   # The priority is based upon order of creation:

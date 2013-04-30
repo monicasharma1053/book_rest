@@ -25,6 +25,9 @@
   <%= @book.isbn %>
 </p>
 
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<% if params[:order_id] %>
+  <%= link_to 'Back', order_books_path(@order) %>
+<% else %>
+  <%= link_to 'Edit', edit_book_path(@book) %> |
+  <%= link_to 'Back', books_path %>
+<% end %>

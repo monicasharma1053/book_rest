@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+  
   
 
   # render new.rhtml
@@ -18,6 +17,8 @@ class UsersController < ApplicationController
       flash.now[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new'
     end
+
+
   end
 
   def activate
