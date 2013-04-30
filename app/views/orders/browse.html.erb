@@ -1,0 +1,31 @@
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+
+
+  <% @books.each do |book| %>
+    <tr>
+    <td><%= book.title %></td>
+    <td><%= book.author %></td>
+    <td><%= book.price %></td>
+    <td><%= link_to 'Details', order_book_path(@order, book) %></td>
+    <% if @order.books.include? book %>
+      <td><%= link_to 'Remove from cart', return_book_path(@order, book), method: :post %></td>
+  <% else %>
+      <td><%= link_to 'Purchase', purchase_book_path(@order, book), method: :post %></td>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Home', root_path %>
+<%= link_to 'Back To Order', order_books_path(@order) %>
